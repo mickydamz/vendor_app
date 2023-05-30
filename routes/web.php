@@ -15,19 +15,19 @@ use App\Http\Livewire\MultistepPoc;
 */
 
 Route::get('/', function () {
-    return view('markets');
+    return view('dup');
 })->middleware(['auth', 'verified']);
 
 Auth::routes();
 
 Route::get('/home', 
    function(){
-     return view('markets');
+    return view('dup');
 })->middleware(['auth', 'verified']);
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('dup');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
