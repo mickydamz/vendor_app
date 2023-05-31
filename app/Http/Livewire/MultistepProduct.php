@@ -10,6 +10,7 @@ use App\Models\Stores;
 use App\Models\Category;
 use App\TodoInvestment;
 use App\Mail\Deposit as Dep;
+use Illuminate\Support\Facades\Http;
 use Mail;
 
 class MultistepProduct extends Component
@@ -165,7 +166,7 @@ class MultistepProduct extends Component
 
 
 
-            $destinationPath = 'public/todos'; 
+        $destinationPath = 'public/todos'; 
 
         $extension = $this->fileName->getClientOriginalExtension(); 
 
@@ -195,6 +196,23 @@ class MultistepProduct extends Component
                    'uom_id' =>  1, 
 
             ]);
+
+
+
+            
+
+try {
+
+    $response = Http::post('https://api.vensemart.com/update-product_image', [
+        'product_title' => $this->product_title,
+        'product_image' => $this->product_image
+    ]);
+
+    // Handle the response
+} catch (\Exception $e) {
+    // Handle the exception
+    print($e);
+}
 
            
 
